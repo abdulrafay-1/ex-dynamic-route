@@ -13,7 +13,6 @@ const Product = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!data.message) {
-          console.log("me chal", data.message);
           setProduct(data);
         } else {
           setError(true);
@@ -29,7 +28,7 @@ const Product = () => {
     <>
       {error && <h3>Error Product not found !</h3>}
       {product && (
-        <div className="container mt-10 lg:max-w-screen-sm mx-auto ">
+        <div className="container mt-8 lg:max-w-screen-sm mx-auto ">
           <Card
             title={product.title}
             description={product.description}

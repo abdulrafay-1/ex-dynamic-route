@@ -12,14 +12,13 @@ const Card = ({ src, title, description, price, rating, brand, category }) => {
       </figure>
       <div className="p-6">
         <header className="mb-4">
-          <h3 className="text-xl font-medium text-slate-700">{title}</h3>
-          <p className="text-sm text-slate-400">{price}$</p>
+          <h3 className="text-2xl font-medium text-slate-700">{title}</h3>
+          <p className="text-md text-slate-400">{price}$</p>
         </header>
-        <p>Brand : {brand ? brand : 'no brand'}</p>
+        <p>Brand : {brand ? brand : "no brand"}</p>
         <p>Category : {category}</p>
         <p>Description : {description}</p>
         <p>Rating : {rating}</p>
-        
       </div>
     </div>
   );

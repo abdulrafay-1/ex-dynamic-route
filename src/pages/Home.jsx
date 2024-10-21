@@ -3,13 +3,20 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [products, setProducts] = useState(null);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
+    setLoading(true);
     fetch("https://dummyjson.com/products?skip=30")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setProducts(data.products);
-      });
+      })
+      .catch((err) => {
+        setError(true);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const navigate = useNavigate();
@@ -19,6 +26,22 @@ const Home = () => {
       <h1 className="text-center text-3xl lg:text-4xl mb-4 font-semibold">
         Products
       </h1>
+      {error && (
+        <h2 className="text-center mt-10 text-2xl underline text-red-400">
+          Error Fetching Products...
+        </h2>
+      )}
+      {loading && (
+        <div className="h-[80vh] flex justify-center items-center">
+          <div
+            className="animate-spin inline-block size-8 border-[3px] border-current border-t-transparent text-blue-600 rounded-full dark:text-blue-500"
+            role="status"
+            aria-label="loading"
+          >
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      )}
       <div className="flex gap-2 justify-around  flex-wrap">
         {products &&
           products.map((item, index) => (
