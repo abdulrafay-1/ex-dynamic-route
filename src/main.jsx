@@ -14,8 +14,6 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Home />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="*" element={<h1>Page not Found !</h1>} />
-
-        {/* <Route path="" element={<Home />} /> */}
       </Routes>
     </BrowserRouter>
   </StrictMode>
